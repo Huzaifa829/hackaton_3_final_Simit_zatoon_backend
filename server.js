@@ -8,12 +8,12 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:5173' 
-}));
+app.use(cors());
 
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  return res.status(200).send("Hello World");
+});
 app.use("/api/user", userroutes);
 
 connectDb()
