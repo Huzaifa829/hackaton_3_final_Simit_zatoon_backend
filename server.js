@@ -6,6 +6,7 @@ import cors from "cors";
 
 dotenv.config();
 
+const PORT =process.env.PORT || '3000'
 const app = express();
 
 app.use(cors());
@@ -19,7 +20,7 @@ app.use("/api/user", userroutes);
 connectDb()
   .then(() => {
     app.listen(process.env.PORT, () => {
-      console.log(`Server is running on port ${process.env.PORT}`);
+      console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((err) => {
