@@ -1,13 +1,21 @@
-import express from "express";
-import { forgotPassword, Login, resetPassword, Signup, verifyOtp } from "../controllers/Usercontroller.js";
-import upload from "../middleware/Multer.middleware.js";
+import express from 'express';
+import {
+  createUser,
+  getAllUsers,
+  getUserById,
+  updateUser,
+  deleteUser,
+  loginUser,
+} from '../controllers/UserController1.js';
 
 const router = express.Router();
 
-router.post("/Signup", Signup);
-router.post("/Login", Login);
-router.post("/forgotpassword", forgotPassword);
-router.post("/verifyotp", verifyOtp);
-router.post("/resetpassword", resetPassword);
+// Routes
+router.post('/', createUser); // Create user
+router.get('/', getAllUsers); // Get all users
+router.post('/login', loginUser); // Create user
+router.get('/:id', getUserById); // Get user by ID
+router.put('/:id', updateUser); // Update user role/permissions
+router.delete('/:id', deleteUser); // Delete user
 
 export default router;

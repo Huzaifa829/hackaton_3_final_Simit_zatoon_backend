@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import userroutes from "./src/routes/UserRoutes.js";
+import userRoutes from "./src/routes/UserRoutes.js";
+import beneficiaryRoutes from "./src/routes/beneficiaryRoutes.js";
 import connectDb from "./src/db/index.js";
 import cors from "cors";
 
@@ -15,7 +16,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   return res.status(200).send("Hello World");
 });
-app.use("/api/user", userroutes);
+// app.use("/api/user", userroutes);
+app.use('/api/users', userRoutes);
+app.use('/api/beneficiaries', beneficiaryRoutes);
 
 connectDb()
   .then(() => {
